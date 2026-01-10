@@ -15,6 +15,7 @@ export const clerkWebhooks = async (req, res) => {
             "svix-signature": req.headers["svix-signature"]
         })
 
+        const { data, type } = req.body;
         //switch cases for different events
         switch (type) {
             case 'user.created': {
@@ -52,8 +53,8 @@ export const clerkWebhooks = async (req, res) => {
         }
 
     } catch (error) {
-       console.log(error.message);
-       res.json({succes:false, message:"Webhooks Error"})
-       
+        console.log(error.message);
+        res.json({ succes: false, message: "Webhooks Error" })
+
     }
 }
